@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Vue Example</title>
+    <style>
+      /* 버튼의 배경색과 글자색을 정의하는 클래스 */
+      .buttonColor {
+        background-color: aqua;
+        color: black;
+      }
+      /* 버튼의 레이아웃을 정의하는 클래스 */
+      .buttonLayout {
+        text-align: center;
+        width: 120px;
+      }
+      /* 버튼의 테두리를 정의하는 클래스 */
+      .staticBorder {
+        border: khaki dashed 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 체크박스: isMyLayout 데이터 바인딩 -->
+      <input type="checkbox" v-model="isMyLayout" /> 레이아웃 적용 여부 <br />
+      <!-- 버튼 요소: 클래스를 동적으로 바인딩 -->
+      <button
+        class="staticBorder"
+        :class="[myColor, isMyLayout ? myLayout : '']"
+      >
+        .. 버튼2
+      </button>
+    </div>
+
+    <!-- Vue.js 라이브러리 로드 -->
+    <script src="https://unpkg.com/vue"></script>
+    <script>
+      const vm = Vue.createApp({
+        name: 'App', // 앱의 이름
+        data() {
+          return {
+            myColor: 'buttonColor', // 초기 데이터로 buttonColor 클래스 지정
+            myLayout: 'buttonLayout', // 초기 데이터로 buttonLayout 클래스 지정
+            isMyLayout: false, // 체크박스 상태를 위한 데이터
+          };
+        },
+      }).mount('#app'); // '#app' 요소에 애플리케이션 마운트
+    </script>
+  </body>
+</html>
